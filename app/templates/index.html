@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tripper</title>
+	
+    <!-- css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="{{ url_for('static',filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static',filename='css/nivo-lightbox.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static',filename='css/nivo-lightbox-theme/default/default.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static',filename='css/animations.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='color/default.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{url_for('static',filename='img/favicon.jpg')}}" />
+
+	{% with messages = get_flashed_messages() %}
+  	{% if messages %}
+    <script>
+      	var messages = {{ messages | safe }};
+      	for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      		}
+    </script>
+ 	 {% endif %}
+	{% endwith %}
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+	
+	<section class="hero" id="intro">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 text-right navicon">
+                  <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center inner">
+					<div class="animatedParent">
+						<h1 class="animated fadeInDown" style="color:black;">TRIPPER</h1>
+						<p class="animated fadeInUp" style="color:black;">Plan. Travel. Repeat.</p>
+					</div>
+			   </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                  <a href="#login" class="learn-more-btn btn-scroll btn-scroll ">Login/SignUp</a>
+                </div>
+              </div>
+            </div>
+    </section>
+	
+	
+    <!-- Navigation -->
+    <div id="navigation">
+        <nav class="navbar navbar-custom" role="navigation">
+                              <div class="container">
+                                    <div class="row">
+                                          <div class="col-md-2">
+                                                   <div class="site-logo">
+                                                            <a href="index.html" class="brand">TRIPPER</a>
+												   </div>
+                                          </div>
+                                          <div class="col-md-10">
+                                                      <!-- Brand and toggle get grouped for better mobile display -->
+                                          <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                                                <i class="fa fa-bars"></i>
+                                                </button>
+                                          </div>
+                                                      <!-- Collect the nav links, forms, and other content for toggling -->
+                                                      <div class="collapse navbar-collapse" id="menu">
+                                                            <ul class="nav navbar-nav navbar-right">
+                                                                  <li class="active"><a href="#intro">Home</a></li>
+                                                                  <li><a href="#about">About Us</a></li>
+																   <li><a href="#service">Services</a></li>
+                                                                  <li><a href="#works">Works</a></li>
+                                                                  <li><a href="#login">Login/SignUp</a></li>
+                                                            </ul>
+                                                      </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              <!-- /.container -->
+		</nav>
+    </div> 
+    <!-- /Navigation -->  
+
+	<!-- Section: about -->
+    <section id="about" class="home-section color-dark bg-white">
+		<div class="container marginbot-50">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="animatedParent">
+					<div class="section-heading text-center animated bounceInDown">
+					<h2 class="h-bold">About Tripper </h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 animatedParent">		
+				<div class="text-center">
+					<p>
+					Tripper is a place where you can bring all your friends together and plan a holiday without the hassel of meeting in person to just plan the trip.
+					</p>
+					<p>
+						Be it a long trip or a short trip, Tripper has all your destinations covered.
+					</p>
+					<a href="#service" class="btn btn-skin btn-scroll">What we do</a>
+				</div>
+            </div>
+        </div>		
+		</div>
+	</section>
+	<!-- /Section: about -->
+	
+	
+	<!-- Section: services -->
+    <section id="service" class="home-section color-dark bg-gray">
+		<div class="container marginbot-50">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div>
+					<div class="section-heading text-center">
+					<h2 class="h-bold">What we can do for you</h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center">
+		<div class="container">
+        <div class="row animatedParent">
+            <div class="col-xs-6 col-sm-4 col-md-4">
+				<div class="animated rotateInDownLeft">
+                <div class="service-box">
+					<div class="service-icon">
+						<span class="fa fa-users fa-2x"></span> 
+					</div>
+					<div class="service-desc">						
+						<h5>Form groups</h5>
+						<div class="divider-header"></div>
+						<p>
+						Form your own group with your friends and family. Don't have a company? , Search for people who has craziness like you and plan with them.
+						</p>
+						<a href="#login" class="btn btn-skin">Learn more</a>
+					</div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-4 col-md-4">
+				<div class="animated rotateInDownLeft slow">
+                <div class="service-box">
+					<div class="service-icon">
+						<span class="fa fa-comments fa-2x"></span> 
+					</div>
+					<div class="service-desc">
+						<h5>Chat and Decide</h5>
+						<div class="divider-header"></div>
+						<p>
+						Chat among your group mates on places to visit or eat and come to a conclusion. Add members to your group chat from your GOOGLE contacts or search using the UserID.
+						</p>
+						<a href="#login" class="btn btn-skin">Learn more</a>
+					</div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-4 col-md-4">
+				<div class="animated rotateInDownLeft slower">
+                <div class="service-box">
+					<div class="service-icon">
+						<span class="fa fa-glass fa-2x"></span> 
+					</div>
+					<div class="service-desc">
+						<h5>FOOD-STAY-VISIT</h5>
+						<div class="divider-header"></div>
+						<p>
+						 Get all information on the places to visit , eat and to lodge during the trip.
+						 Integrated with Google, all the information will be available right beside your ChatBox.
+						</p>
+						<a href="#login" class="btn btn-skin">Learn more</a>
+					</div>
+                </div>
+				</div>
+            </div>
+        </div>		
+		</div>
+		</div>
+	</section>
+	<!-- /Section: services -->
+	
+
+	<!-- Section: works -->
+    <section id="works" class="home-section color-dark text-center bg-white">
+		<div class="container marginbot-50">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div>
+					<div class="animatedParent">
+					<div class="section-heading text-center">
+					<h2 class="h-bold animated bounceInDown">Popular Tourist Spots</h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+            <div class="row animatedParent">
+                <div class="col-sm-12 col-md-12 col-lg-12" >
+                    <div class="row gallery-item">
+                        <div class="col-md-3 animated fadeInUp">
+							<a href="{{ url_for('static',filename='img/works/1.jpg')}}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+								<img src="{{ url_for('static',filename='img/works/1.jpg')}}" class="img-responsive" alt="img">
+							</a>
+						</div>
+						<div class="col-md-3 animated fadeInUp slow">
+							<a href="{{ url_for('static',filename='img/works/2.jpg')}}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+								<img src="{{ url_for('static',filename='img/works/2.jpg')}}" class="img-responsive" alt="img">
+							</a>
+						</div>
+						<div class="col-md-3 animated fadeInUp slower">
+							<a href="{{ url_for('static',filename='img/works/3.jpg')}}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+								<img src="{{ url_for('static',filename='img/works/3.jpg')}}" class="img-responsive" alt="img">
+							</a>
+						</div>
+						<div class="col-md-3 animated fadeInUp">
+							<a href="{{ url_for('static',filename='img/works/4.jpg')}}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg">
+								<img src="{{ url_for('static',filename='img/works/4.jpg')}}" class="img-responsive" alt="img">
+							</a>
+						</div>
+					</div>
+                </div>
+            </div>	
+		</div>
+	</section>
+	<!-- /Section: works -->
+
+	<!-- Section: contact -->
+    <section id="login" class="home-section nopadd-bot color-dark bg-gray text-center">
+		<div class="container marginbot-50">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="animatedParent">
+					<div class="section-heading text-center">
+					<h2 class="h-bold animated bounceInDown">Start Using TRIPPER</h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row marginbot-80">
+				<div class="col-md-8 col-md-offset-2">
+						<form id="contact-form" action="/select" method="POST">
+						<div class="row marginbot-20">
+							<div class="col-md-6 xs-marginbot-20">
+								<input type="email" class="form-control input-lg" id="email" name="email" placeholder="Enter Email" required="required" />
+							</div>
+							<div class="col-md-6 xs-marginbot-20">
+								<input type="password" class="form-control input-lg" id="password" name="password" placeholder="Enter Password" required="required" />
+							</div>
+							<div class="col-md-6 xs-marginbot-20">
+							</div>
+						</div>
+							<input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="Enter Phone Number" pattern="[789][0-9]{9}" required="required" />
+							<br><button type="submit" class="btn btn-skin btn-lg btn-block" id="login" name="submit" value="login">
+									 Login/SignUp</button>
+						</form>
+				</div>
+			</div>
+		</div>
+		<div class="container marginbot-10">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="animatedParent">
+					<div class="section-heading text-center">
+					<h2 class="h-bold animated bounceInDown">We recommend to Login/SignUp Using Google!</h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				<div class="container">
+			<div class="row marginbot-80">
+				<div class="col-md-8 col-md-offset-2">
+						<form id="contact-form"  action="/glogin" method="POST" >
+						<div class="row marginbot-20">
+						</div>
+							<input type="text" class="form-control input-lg" id="phone2" name="phone2" placeholder="Enter Phone Number" pattern="[789][0-9]{9}" required="required" />
+							<br>
+							<button type="submit" class="btn btn-skin btn-lg btn-block" id="glogin" name="glogin" value="glogin">
+									 Use My Google Account</button>
+							</div>
+						</div>
+						</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Section: contact -->
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="footer-menu">
+						<li><a href="#">Home</a></li>
+						<li><a href="www.facebook.com/">Facebook</a></li>
+						<li><a href="www.instagram.com/">Instagram</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 text-right">
+				<p>&copy;Balaji D R <a href="http://bootstraptaste.com/">Bootstrap Themes</a>Original Theme by BootstrapTaste</p>                    <!--
+                        All links in the footer should remain intact. 
+                        Licenseing information is available at: http://bootstraptaste.com/license/
+                        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Bocor
+                    -->
+				</div>
+			</div>	
+		</div>
+	</footer>
+
+    <!-- Core JavaScript Files -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static',filename='js/jquery.sticky.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery.easing.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/jquery.scrollTo.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/jquery.appear.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/stellar.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/nivo-lightbox.min.js') }}"></script>
+	
+    <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/css3-animate-it.js') }}"></script>
+
+</body>
+
+</html>

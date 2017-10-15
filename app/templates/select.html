@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tripper</title>
+	
+    <!-- css -->
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="{{ url_for('static',filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static',filename='css/nivo-lightbox.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static',filename='css/nivo-lightbox-theme/default/default.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static',filename='css/animations.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='color/default.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{url_for('static',filename='img/favicon.jpg')}}" />
+
+	{% with messages = get_flashed_messages() %}
+  	{% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+ 	 {% endif %}
+	{% endwith %}
+
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <!-- Navigation -->
+    <div id="navigation">
+        <nav class="navbar navbar-custom" role="navigation">
+                              <div class="container">
+                                    <div class="row">
+                                          <div class="col-md-2">
+                                                   <div class="site-logo">
+                                                            <a href="index.html" class="brand">Tripper</a>
+												   </div>
+                                          </div>
+                                          <div class="col-md-10">
+                                                      <!-- Brand and toggle get grouped for better mobile display -->
+                                          <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                                                <i class="fa fa-bars"></i>
+                                                </button>
+                                          </div>
+                                                      <!-- Collect the nav links, forms, and other content for toggling -->
+                                                     <div class="collapse navbar-collapse" id="user">
+                                                            <ul class="nav navbar-nav navbar-right">
+																   <li><a href="/logout">Logout</a></li>
+                                                                  <li><a href="#">- - - - - -</a></li>
+                                                                  <li class="active"><a href="#">{% if username %} {{ username }} {% endif %}</a></li>
+                                                            </ul>
+													 </div>
+                                                      <!-- /.Navbar-collapse -->
+                                          </div>
+                                    </div>
+                              </div>
+                              <!-- /.container -->
+                        </nav>
+    </div> 
+    <!-- /Navigation -->  
+
+	<!-- Section: about -->
+    <section id="trip" class="home-section color-dark bg-white" >
+    <div class="bgimg">
+		<div class="container marginbot-50" >
+			<div class="row" >
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="animatedParent">
+					<div class="section-heading text-center animated bounceInDown" >
+					<h2 class="h-bold" style="color:white;">Select your Trip Type</h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 animatedParent">
+				<div class="text-center">
+					<p>
+					<form action="#friends" method="POST">
+					<select name="type" >
+						<option value="defaut" selected >Please select One</option>
+  						<option value="long">Long Trip</option>
+  						<option value="short">Short Trip</option>
+					</select>
+					</form>
+					</p>
+					<a href="#friends" class="btn btn-skin btn-scroll">NEXT</a>
+				</div>
+            </div>
+		</div>
+
+        </div>		
+		</div>
+	</section>
+
+    <section id="friends" class="home-section color-dark bg-gray">
+		<div class="section-heading text-center">
+					<h2 class="h-bold">Form your Group to plan with</h2>
+					<div class="divider-header"></div>
+		</div>
+    	<div class="bg1img">
+			<div class="container marginbot-50">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center">
+		<div class="container">
+        <div class="row animatedParent">
+            <div class="col-xs-6 col-sm-4 col-md-4">
+				<div class="animated rotateInDownLeft">
+                <div class="service-box">
+					<div class="service-desc">						
+						<h5>Search People</h5>
+						<div class="divider-header"></div>
+						<p>
+						<form action="/mycontacts" method="POST">
+							<div class="col-md-8 xs-marginbot-60">
+								<input type="text" class="form-control input-lg" id="pnum" name="pnum" placeholder="Enter phone number" style="width:300px;"/>
+							</div>
+						<br>
+						<br>
+						<br>
+						<button type="submit" class="btn btn-skin btn-lg btn-block" value="addcon" name="submit" id="submit" style="width:100px;">Add</button>
+						</p>
+						<br>
+						<p>
+							<h5>Add From Google Contacts</h5>
+							<div class="divider-header"></div>
+							<button type="submit" class="btn btn-skin btn-lg btn-block"  name="submit" value="gcontacts" id="submit" style="width:100px;">Add</button>
+						</p>
+						</form>
+					</div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-4 col-md-4">
+				<div class="animated rotateInDownLeft slow">
+                <div class="service-box">
+					<div class="service-desc">
+						<h5>Your Friends</h5>
+						<div class="divider-header"></div>
+						<p>
+							<select name="fromlistbox" id="fromlistbox" multiple size="3" style="width:200px">
+								<option value="" disabled selected >Please select</option>
+								{% if contact %}
+									{% for name in contact %}
+										<option value="{{ numbers[name] }}" >{{ name }}</option>
+									{% endfor %}
+								{% endif %}
+							</select>
+						</p>
+							<a href="#friends" class="btn btn-skin" id="addtogroup" name="addtogroup" style="width:160px;">Add to Group</a>
+						<p>
+						<h5>Your Group</h5>
+						<div class="divider-header"></div>
+						<form action="/myplan" method="POST">
+							<select name="tolistbox" id="tolistbox" multiple size="2" style="width:200px" required>
+								<option  disabled value=""   hidden >Your List of People</option>
+							</select>
+						</p>
+					</div>
+                </div>
+				</div>
+            </div>
+			<div class="col-xs-6 col-sm-4 col-md-4">
+				<div class="animated rotateInDownLeft slower">
+                <div class="service-box">
+					
+					<div class="service-desc">
+						
+						<p>
+						<button type="submit" class="btn btn-skin btn-lg btn-block" value="plan" id="submit" name="submit" style="width:300px;height:300px;">Plan >>> </button>
+						</p>
+						</form>
+					</div>
+                </div>
+				</div>
+            </div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</section>
+	<!-- /Section: services -->
+	
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="footer-menu">
+						<li><a href="www.facebook.com">Facebook</a></li>
+						<li><a href="www.instagram.com">Instagram</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 text-right">
+					<p>&copy;Balaji D R <a href="http://bootstraptaste.com/">Bootstrap Themes</a>Original Theme by BootstrapTaste</p>
+                    <!-- 
+                        All links in the footer should remain intact. 
+                        Licenseing information is available at: http://bootstraptaste.com/license/
+                        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Bocor
+                    -->
+				</div>
+			</div>	
+		</div>
+	</footer>
+
+    <!-- Core JavaScript Files -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static',filename='js/jquery.sticky.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery.easing.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/jquery.scrollTo.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/jquery.appear.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/stellar.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/nivo-lightbox.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/css3-animate-it.js') }}"></script>
+
+	<!-- jquery -->
+	<script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            $("#addtogroup").click(function() {
+                $("#fromlistbox  option:selected").appendTo("#tolistbox");
+            });
+        });
+	</script>
+
+</body>
+
+</html>
