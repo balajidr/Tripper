@@ -19,7 +19,7 @@ A Web application to plan trips with your friends. (College Project).
      2. The Chat system is NOT INSTANT. It is similar to USER POSTS.
      3. When a group is formed there is no ADMIN for the group.
      4. A User can be part of ONE GROUP only.
-     5. Each user has to CLOSE the trip in order to Form another group.
+     5. Passwords are not Hashed while storing in the Database.
      
   5th Semester, OOAD/WEB Design Project.
   
