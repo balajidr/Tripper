@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tripper</title>
+	
+    <!-- css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="{{ url_for('static',filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static',filename='css/nivo-lightbox.css') }}" rel="stylesheet" />
+	<link href="{{ url_for('static',filename='css/nivo-lightbox-theme/default/default.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static',filename='css/animations.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='color/default.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{url_for('static',filename='img/favicon.jpg')}}" />
+	<style type="text/css" media="screen">
+		.tg  {border-collapse:collapse;border-spacing:0;border-color:#bbb;border-width:1px;border-style:solid; width:900px ;display:block; height: 400px;overflow-y: auto;}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:13px 1px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#bbb;color:#594F4F;background-color:#E0FFEB; word-wrap: break-word; width:900px;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:13px 1px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#bbb;color:#493F3F;background-color:#9DE0AD;}
+		.tg .tg-baqh{text-align:center;vertical-align:top}
+		.tg .tg-9hbo{font-weight:bold;vertical-align:top; text-align:center;}
+		.tg .tg-yw4l{vertical-align:top; text-align:center;}
+	</style>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+    <!-- Navigation -->
+    <div id="navigation">
+        <nav class="navbar navbar-custom" role="navigation">
+                              <div class="container">
+                                    <div class="row">
+                                          <div class="col-md-2">
+                                                   <div class="site-logo">
+                                                            <a href="index.html" class="brand">TRIPPER</a>
+												   </div>
+                                          </div>
+                                          <div class="col-md-10">
+                                                      <!-- Brand and toggle get grouped for better mobile display -->
+                                          <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                                                <i class="fa fa-bars"></i>
+                                                </button>
+                                          </div>
+                                                      <!-- Collect the nav links, forms, and other content for toggling -->
+                                               <div class="collapse navbar-collapse" id="user">
+                                                            <ul class="nav navbar-nav navbar-right">
+																<li><a href="/logout">Logout</a></li>
+																<li><a href="/goodbye">Close Trip</a></li>
+																<li><a href="#">- - - - - -</a></li>
+																<li class="active"><a href="#">{% if username %} {{ username }} {% endif %}</a></li>
+                                                            </ul>
+											   </div>
+                                                      <!-- /.Navbar-collapse -->
+                                          </div>
+                                    </div>
+                              </div>
+		</nav>
+    </div> 
+    <!-- /Navigation -->  
+	
+	<!-- Section: services -->
+    <section id="service" class="home-section color-dark bg-gray">
+		<div class="container marginbot-50">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div>
+					<div class="section-heading text-center">
+					<h2 class="h-bold">Find your Destination</h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center">
+		<div class="container">
+        <div class="row animatedParent">
+            <div class="col-xs-6 col-sm-4 col-md-12">
+				<div class="animated rotateInDownLeft">
+                <div class="service-box">
+					<div class="service-desc">						
+						<h5>Search for Places</h5>
+						<div class="divider-header"></div>
+						<p>
+						<div>
+							<div class="container">
+			<div class="row marginbot-80">
+				<div class="col-md-8 col-md-offset-2">
+						<form action="/myplan2" method="POST">
+						<div class="row marginbot-20">
+							<div class="col-md-6 xs-marginbot-20">
+								<input type="text" class="form-control input-lg" id="place" name="place" placeholder="Enter Destination" required="required" />
+							</div>
+							<div class="col-md-6 xs-marginbot-20">
+								<input type="text" class="form-control input-lg" id="search_string" name="search_string" placeholder="Search for..." required />
+							</div>
+							<br>
+						</div>
+							<select name="type" id="type" required >
+								<option value="" selected disabled hidden>Please Select</option>
+								<option value="TYPE_MOVIE_THEATER">Movie Theater</option>
+								<option value="TYPE_PARK">Park</option>
+								<option value="TYPE_FOOD">Hotels</option>
+								<option value="TYPE_PLACE_OF_WORSHIP">Temples</option>
+								<option value="TYPE_SHOPPING_MALL">Shopping Mall</option>
+								<option value="TYPE_ZOO">Zoo</option>
+								<option value="TYPE_LODGING">Lodges</option>
+								<option value="TYPE_GAS_STATION">Fuel Stations</option>
+								<option value="TYPE_CASINO">Casino</option>
+								<option value="TYPE_CAR_RENTAL">Car Rentals</option>
+								<option value="TYPE_CAR_REPAIR">Car Repairs</option>
+								<option value="TYPE_CAFE">Cafes</option>
+								<option value="TYPE_BAR">Bars</option>
+								<option value="TYPE_ATM">ATM</option>
+								<option value="TYPE_ART_GALLERY">Art Galleries</option>
+								<option value="TYPE_AMUSEMENT_PARK">Amusement Parks</option>
+								<option value="TYPE_POINT_OF_INTEREST">Places of Interest</option>
+							</select>
+							<br>
+							<br><button type="submit" value="submit" class="btn btn-skin btn-lg btn-block" name="submit"  id="submit" >
+									 Search</button>
+						</form>
+						</div>
+				</div>
+							</div>
+			</div>
+		</div>
+
+						{% if details %}
+						<br>
+						<center>
+						<table class="tg">
+  							<tr>
+						    <th class="tg-9hbo">Name</th>
+						    <th class="tg-9hbo">Address</th>
+						    <th class="tg-9hbo">Rating</th>
+						    <th class="tg-9hbo">Phone</th>
+						  </tr>
+							{% for each in details %}
+						  <tr>
+							  <td class="tg-yw4l"><a target="_blank" href="{{ each.url }}"> {{ each.name }}</a></td>
+							  <td class="tg-baqh">{{ each.address}}</td>
+							  <td class="tg-baqh">{{ each.rating }}</td>
+							  <td class="tg-yw4l">{{ each.phone }}</td>
+						  </tr>
+						  	{% endfor %}
+						</table>
+						</center>
+					{% endif %}
+
+						</p>
+					</div>
+                </div>
+				</div>
+            </div>
+        </div>		
+		</div>
+		</div>
+	</section>
+	<!-- /Section: services -->
+		
+	<!-- Section: contact -->
+    <section id="login" class="home-section nopadd-bot color-dark bg-gray text-center">
+		<div class="container marginbot-50">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="animatedParent">
+					<div class="section-heading text-center">
+					<h2 class="h-bold animated bounceInDown">Chat with your Group</h2>
+					<div class="divider-header"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row marginbot-80">
+				<div class="col-md-8 col-md-offset-4">
+					<form id="chatbox" action="/myplan" method="POST" >
+						<div class="row marginbot-20">
+							<div class="col-md-6 xs-marginbot-70">
+								<textarea class="form-control input-lg" id="chat" name="chat" style="height:300px;"></textarea><br>
+								<input type="text" class="form-control input-lg" id="message" name="message" placeholder="Enter your message"    required/>
+							</div>
+						</div>
+								<button type="submit" class="btn btn-skin btn-lg btn-block" name="submit" value="send" id="submit"   style="width:200px;">
+									 Send</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="footer-menu">
+						<li><a href="#">Home</a></li>
+						<li><a href="www.facebook.com/">Facebook</a></li>
+						<li><a href="www.instagram.com/balaji.dr/">Instagram</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 text-right">
+					<p>&copy;Balaji D R <a href="http://bootstraptaste.com/">Bootstrap Themes</a>Original Theme by BootstrapTaste</p>                    <!--
+                        All links in the footer should remain intact. 
+                        Licenseing information is available at: http://bootstraptaste.com/license/
+                        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Bocor
+                    -->
+				</div>
+			</div>	
+		</div>
+	</footer>
+
+    <!-- Core JavaScript Files -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static',filename='js/jquery.sticky.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery.easing.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/jquery.scrollTo.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/jquery.appear.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/stellar.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/nivo-lightbox.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/css3-animate-it.js') }}"></script>
+
+	<script>
+	{% if temp %}
+	{% for each1,each2 in temp %}
+	document.getElementById('chat').value = document.getElementById('chat').value +"\n"+ "{{each1}} : {{each2}}"
+	{% endfor %}
+	{% endif %}
+
+	function sync() {
+  		document.getElementById('chat').value = document.getElementById('chat').value + "\n" + "{{ username }}" +" : "+ document.getElementById('text').value;
+  		document.getElementById('text').value='';
+  		document.getElementById("chatbox").submit();
+				}
+	</script>
+
+</body>
+</html>
