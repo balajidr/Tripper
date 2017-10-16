@@ -184,7 +184,7 @@ def glogin():
 @app.route('/mycontacts', methods=["POST","GET"])
 def mycontacts():
 
-    if request.method == "POST":
+      if request.method == "POST":
         if request.form['submit'] == 'addcon':
             pnum = request.form['pnum']
             if pnum in session['allphonenumbers']:
@@ -199,14 +199,22 @@ def mycontacts():
                 dbclose(connection)
                 return redirect(url_for("mycontacts"))
 
-            else:
-                for row in fetch:
-                    session['contacts'].append(row['email'])
-                    session['contactsdict'][row['email']] = row['phone']
-                    session['allphonenumbers'].insert(0, row['phone'])
+            fetch = connection.execute("SELECT email,phone from users where phone=%s", val)
+            for row in fetch:
+                if row['email'] == session['username']:
+                    flash("We feel Sorry for your Loneliness. But you can't add yourself to your friendlist :( ")
                     dbclose(connection)
-                return render_template('select.html', contact=session['contacts'], numbers=session['contactsdict'], username=session['shortname'])
+                    return redirect(url_for("mycontacts"))
 
+                else:
+                    fetch = connection.execute("SELECT email,phone from users where phone=%s", val)
+                    for row in fetch:
+                        session['contacts'].append(row['email'])
+                        session['contactsdict'][row['email']] = row['phone']
+                        session['allphonenumbers'].insert(0, row['phone'])
+                        dbclose(connection)
+                    return render_template('select.html', contact=session['contacts'], numbers=session['contactsdict'], username=session['shortname'])
+                
         elif request.form['submit'] == 'gcontacts':
             GOOGLE_CLIENT_ID = 'PASTE YOUR GOOGLE CLIENT_ID HERE'
             GOOGLE_CLIENT_SECRET = 'PASTE YOUR GOOGLE CLIENT_SECRET HERE'
@@ -395,6 +403,10 @@ def goodbye():
     value = session['username']
     connection = dbconnect()
     connection.execute("DELETE from groups where username=%s", value)
+    val = session['group_id']
+    fetch = connection.execute("SELECT * from groups where group_id=%s", val)
+    if fetch.rowcount == 0:
+        connection.execute("DELETE from posts where group_id=%s", val)
     dbclose(connection)
     return render_template("goodbye.html", username=session['shortname'])
 
@@ -402,4 +414,8 @@ def goodbye():
 @app.route('/logout')
 def logout():
     session['loggedIn'] = False
+    try:
+        os.remove(session['filename'])
+    except OSError:
+        pass
     return redirect(url_for("index"))
