@@ -60,8 +60,17 @@ def select():
                         for raw in check:
                             if raw['group_id']:
                                 session['group_id'] = raw['group_id']
+                                pval = session['group_id']
+                                users = []
+                                postlist = []
+                                fetch = connection.execute(
+                                    'SELECT * FROM posts where group_id=%s ORDER BY time ASC', pval)
+                                for ra in fetch:
+                                    users.append(ra['username'])
+                                    postlist.append(ra['post'])
+                                temp = zip(users, postlist)
                                 dbclose(connection)
-                                return render_template("myplan.html", username=session['shortname'])
+                                return render_template("myplan.html", username=session['shortname'], temp=temp)
                         dbclose(connection)
                         return render_template("select.html", username=session['shortname'])
                     elif row['email'] == email and row['password'] != password or row['phone'] != phone:
