@@ -1,4 +1,4 @@
-# Tripper
+# Tripper   [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 A Web application to plan trips with your friends. (College Project).
 --------------------------------------------------------------------------------
   This app is built over the Flask Microframework for Python.
